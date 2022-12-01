@@ -6,7 +6,7 @@ if __name__ == "__main__":
     with open("./config.json", mode="r") as file:
         config_file = json.load(file)
     totalScore = 0
-    testTimes = 5
+    testTimes = 100
     
     for i in range(testTimes):
         # os.system("pgrep seedcupServer | xargs kill")
@@ -30,3 +30,4 @@ if __name__ == "__main__":
     os.remove("client.out")
     os.remove("server.out")
     print(f"AvgScore: {totalScore/testTimes}")
+    

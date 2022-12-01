@@ -79,7 +79,6 @@ class Client(object):
             if length <= 0:
                 break
         return result
-
     def __enter__(self):
         return self
 

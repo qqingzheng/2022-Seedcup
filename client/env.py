@@ -37,7 +37,6 @@ class Env():
         weaponChoose = PacketReq(PacketType.InitReq, InitReq(MasterWeaponType(int(masterWeapon)), SlaveWeaponType(int(slaveWeapon)))) # 选择武器
         # logger.info(f"weaponSelected master {masterWeapon} slave {slaveWeapon}")
         self.client.send(weaponChoose)
-        
         # 玩家数据
         self.frame = None
         """
@@ -111,7 +110,7 @@ class Env():
                         assert("No this obj type")
         for point in self.dangerPoint:
             self.map[point[0], -point[1]] = self.mapIDMap['enemyWeapon']
-        self.ui.feedback = f"dangerPoint {self.dangerPoint}"
+        self.ui.feedback = f"{self.dangerPoint}"
         for character in self.characters:
             for ocharacter, ocharacterState in self.ocharacters.items():
                 my_x = character['x']

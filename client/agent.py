@@ -139,7 +139,10 @@ class Attack:
                 conquerCount = 0
                 searchingPoint = myPoint + np.array(MapAlgarithm.nearPoint[i])
                 centerPoint = searchingPoint + np.array(MapAlgarithm.nearPoint[i])
-                if root.isPointValid(centerPoint) and env.map[centerPoint[0], -centerPoint[1]] in env.needToAttack:
+                isPointValid = root.isPointValid(centerPoint)
+                if isPointValid and root.isPointDanger(centerPoint):
+                    continue
+                if isPointValid and env.map[centerPoint[0], -centerPoint[1]] in env.needToAttack:
                     conquerCount += env.needToAttack[env.map[centerPoint[0], -centerPoint[1]]]
                 for k in range(0,6):
                     nearPoint = centerPoint + MapAlgarithm.nearPoint[k]  
