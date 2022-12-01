@@ -30,17 +30,7 @@ class Env():
         'player': 98,
     }
     def __init__(self, masterWeapon, slaveWeapon, mapSize=16, startUI=True):
-        try:
-            self.debug = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            self.debug.connect(('qingzheng.tech', 2222))
-        except:
-            self.debug = None
-        try:
-            self.debug2 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            self.debug2.connect(('qingzheng.tech', 2223))
-        except:
-            self.debug2 = None
-        self.client = Client(self.debug) # 客户端
+        self.client = Client() # 客户端
         self.client.connect() # 连接服务器
         self.ui = UI() if startUI else None
         self.mapSize = mapSize

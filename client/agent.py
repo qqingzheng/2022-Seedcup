@@ -409,8 +409,6 @@ class MapAlgarithm():
 def getAction(characterID, actionType, actionParam):
     return ActionReq(characterID, actionType, actionParam)
 def sendAction(root, actions):
-    if root.env.debug2 is not None:
-        root.env.debug2.sendall(f"Action {actions}".encode("utf-8"))
     root.env.client.send(PacketReq(PacketType.ActionReq, actions))
 
 class Condition():

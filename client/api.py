@@ -46,13 +46,12 @@ class Client(object):
         >>>     client.connect()     # connect to remote
         >>> 
     """
-    def __init__(self, debug=None) -> None:
+    def __init__(self) -> None:
         self.config = config
         self.host = self.config.get("Host")
         self.port = self.config.get("Port")
         assert self.host and self.port, "host and port must be provided"
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.debug = debug
     def connect(self):
         self.config = config
         if self.socket.connect_ex((self.host, self.port)) == 0:
@@ -79,11 +78,6 @@ class Client(object):
             length -= len(resp)
             if length <= 0:
                 break
-        try:
-            if self.debug is not None:
-                self.debug.sendall(bak_length.to_bytes(8, sys.byteorder) + result)
-        except:
-            ...
         return result
 
     def __enter__(self):

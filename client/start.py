@@ -14,7 +14,6 @@ def train(test=False):
             actionTree.execute(env, 0)
         else:
             break
-    env.debug.close()
 if __name__ == "__main__":
     set_seed()
     train(False)
